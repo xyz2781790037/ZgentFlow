@@ -1,0 +1,56 @@
+syntax = "proto3";
+package zgentflow;
+option go_package = "./workflow";
+
+// 任务执行结果状态
+enum TaskStatus {
+  STATUS_UNKNOWN = 0;
+  STATUS_SUCCESS = 1; // 顺利完成
+  STATUS_FAILED = 2;  // 执行失败（代码错误或 LLM 崩溃）
+  STATUS_TOOL_CALL = 3; // 请求 Flow 引擎执行本地工具（比如读写文件）
+}
+
+// 引擎生命周期事件（用于 EventStore 落盘和断点续传）
+enum EventType {
+  EVENT_UNKNOWN = 0;
+  EVENT_WORKFLOW_STARTED = 1; // 收到请求，DAG 开始流转
+  EVENT_TASK_SCHEDULED = 2; // 任务进入工作池，准备通过 gRPC 发给 Agent
+  EVENT_TASK_COMPLETED = 3;     // Agent 成功返回，任务完成
+  EVENT_TASK_FAILED = 4;        // Agent 返回失败或发生网络超时
+  EVENT_WORKFLOW_COMPLETED = 5; // DAG 图中所有节点执行完毕
+}
+
+message WorkflowEvent {
+  string workflowID = 1;
+  string taskID = 2;
+  EventType eventType = 3;
+  int64 timeStamp = 4;
+  bytes payload = 5; // Agent 跑出来的代码或报错日志，直接存 bytes
+}
+
+
+// Flow 引擎发给 Agent 的任务请求
+message TaskRequest {
+  string workflowID = 1;
+  string taskID = 2;
+  string agentRole = 3;
+
+  string instruction = 4;  // 具体的 Prompt 指令
+  bytes inputPayload = 5; // 上游节点传过来的数据
+
+  int32 retryCount = 6;
+  int64 timeoutMs = 7;
+}
+
+// Agent 返回给 Flow 引擎的执行结果
+message TaskResponse {
+  string taskID = 1;
+  TaskStatus status = 2;
+
+  bytes resultData = 3;    // 成功时返回的业务数据
+  string errorMessage = 4; // 失败时的报错信息
+
+  int32 promptTokens = 5;
+  int32 completionTokens = 6;
+}
+service AgentWorker { rpc ExecuteTask(TaskRequest) returns (TaskResponse); }
