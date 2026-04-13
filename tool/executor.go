@@ -18,7 +18,7 @@ type ToolExecutor struct {
 }
 
 func NewToolExecutor(workspace string) (*ToolExecutor, error) {
-	if err := os.Mkdir(workspace, 0755); err != nil {
+	if err := os.MkdirAll(workspace, 0755); err != nil {
 		return nil, fmt.Errorf("无法创建工作区: %v", err)
 	}
 	return &ToolExecutor{
@@ -28,8 +28,8 @@ func NewToolExecutor(workspace string) (*ToolExecutor, error) {
 
 // ExecuteShell 在宿主机执行 Shell 命令，带有严格的超时熔断
 func (e *ToolExecutor) ExecuteShell(ctx context.Context, command string, timeoutMs int64) ([]byte, error) {
-	Log.Info("[Tool] 正在执行 Shell", command)
-	cmdCtx, cancel := context.WithTimeout(ctx, time.Duration(timeoutMs)*time.Microsecond)
+	Log.Info("[Tool] 正在执行 Shell", "command", command)
+	cmdCtx, cancel := context.WithTimeout(ctx, time.Duration(timeoutMs)*time.Millisecond)
 	defer cancel()
 	cmd := exec.CommandContext(cmdCtx, "zsh", "-c", command)
 	cmd.Dir = e.WorkspaceDir

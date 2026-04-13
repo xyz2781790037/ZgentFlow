@@ -3,6 +3,7 @@ package tool
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 )
 
 type ShellSkill struct {
@@ -28,7 +29,10 @@ func (s *ShellSkill) Execute(ctx context.Context, args string) (string, error) {
 	if err := json.Unmarshal([]byte(args), &params); err != nil {
 		return "", err
 	}
-	
+	if s.executor == nil {
+		return "", fmt.Errorf("工具执行器未初始化")
+	}
+
 	// 调用现有的 executor 方法
 	out, err := s.executor.ExecuteShell(ctx, params.Command, 15000)
 	if err != nil {
@@ -36,10 +40,6 @@ func (s *ShellSkill) Execute(ctx context.Context, args string) (string, error) {
 	}
 	return string(out), nil
 }
-
-// ==========================================
-// 2. 文件写入技能
-// ==========================================
 type WriteFileSkill struct {
 	executor *ToolExecutor
 }
@@ -63,7 +63,10 @@ func (s *WriteFileSkill) Execute(ctx context.Context, args string) (string, erro
 	if err := json.Unmarshal([]byte(args), &params); err != nil {
 		return "", err
 	}
-	
+	if s.executor == nil {
+		return "", fmt.Errorf("工具执行器未初始化")
+	}
+
 	err := s.executor.WriteFile(params.Filename, []byte(params.Content))
 	if err != nil {
 		return "写入失败: " + err.Error(), nil
