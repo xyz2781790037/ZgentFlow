@@ -10,14 +10,17 @@
 
 # Test binary, built with `go test -c`
 *.test
-cmd/badger_data/*
-cmd/zgent_workspace/*
-qdrant_storage/*
+
 # Code coverage profiles and other test artifacts
 *.out
 coverage.*
 *.coverprofile
 profile.cov
+
+# Go build and profiling artifacts
+bin/
+build/
+*.prof
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
@@ -26,9 +29,49 @@ profile.cov
 go.work
 go.work.sum
 
-# env file
+# Local environment files (keep the public template)
 .env
+.env.*
+!.env.example
 
 # Editor/IDE
-# .idea/
+.idea/
 .vscode/
+.codex
+*.swp
+*.swo
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# ZgentFlow project-local runtimes and data
+.runtime/
+.local-data/
+cmd/badger_data/
+cmd/zgent_workspace/
+qdrant_storage/
+
+# Frontend dependencies and build artifacts
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.eslintcache
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+
+# Python virtual environments and caches
+docreader/.venv/
+.venv/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Logs and temporary files
+*.log
+*.tmp
+tmp/
