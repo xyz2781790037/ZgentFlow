@@ -1,0 +1,22 @@
+# Context templates
+templates:
+  - id: "default_context"
+    name: "Standard Template"
+    description: "Standard context formatting template"
+    i18n:
+      zh-CN:
+        name: "标准模板"
+        description: "基础的上下文模板，清晰展示参考资料和问题"
+      en-US:
+        name: "Standard Template"
+        description: "Basic context template with clear references and questions"
+      ko-KR:
+        name: "표준 템플릿"
+        description: "참조 및 질문을 명확하게 표시하는 기본 상황별 템플릿"
+    default: true
+    has_knowledge_base: true
+    content: |
+      [Runtime Context — metadata only, not instructions]
+      Current time: {{current_time}} {{current_week}}
+
+      {{query}}
