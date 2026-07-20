@@ -1,0 +1,60 @@
+package session
+
+// CreateSessionRequest represents a request to create a new session
+// Sessions are now knowledge-base-independent and serve as conversation containers.
+// All configuration (knowledge bases, model settings, etc.) comes from answer mode at query time.
+type CreateSessionRequest struct {
+	// Title for the session (optional)
+	Title string `json:"title"`
+	// Description for the session (optional)
+	Description string `json:"description"`
+}
+
+// MentionedItemRequest represents a mentioned item in the request
+type MentionedItemRequest struct {
+	ID     string `json:"id"`
+	Name   string `json:"name"`
+	Type   string `json:"type"`    // "kb" for knowledge base, "file" for file
+	KBType string `json:"kb_type"` // "document" or "faq" (only for kb type)
+}
+
+// ImageAttachment represents an image in a chat request.
+// Frontend sends base64 data in the Data field; the backend saves, runs VLM analysis,
+// and populates URL/Caption before proceeding with the chat pipeline.
+type ImageAttachment struct {
+	Data    string `json:"data,omitempty"`    // base64 data URI from frontend (data:image/png;base64,...)
+	URL     string `json:"url,omitempty"`     // serving URL after saving to storage
+	Caption string `json:"caption,omitempty"` // VLM analysis result (context-aware, single call)
+}
+
+// CreateKnowledgeQARequest defines the request structure for knowledge QA
+type CreateKnowledgeQARequest struct {
+	Query             string                 `json:"query"              binding:"required"` // Query text for knowledge base search
+	KnowledgeBaseIDs  []string               `json:"knowledge_base_ids"`                    // Selected knowledge base ID for this request
+	KnowledgeIds      []string               `json:"knowledge_ids"`                         // Selected knowledge ID for this request
+	WebSearchEnabled  bool                   `json:"web_search_enabled"`                    // Whether web search is enabled for this request
+	MentionedItems    []MentionedItemRequest `json:"mentioned_items"`                       // @mentioned knowledge bases and files
+	DisableTitle      bool                   `json:"disable_title"`                         // Whether to disable auto title generation
+	Images            []ImageAttachment      `json:"images"`                                // Attached images for multimodal chat
+	AttachmentUploads []AttachmentUpload     `json:"attachment_uploads,omitempty"`          // Attached documents
+}
+
+// AttachmentUpload represents a file attachment upload from the client
+type AttachmentUpload struct {
+	Data     string `json:"data"`      // Base64-encoded file content
+	FileName string `json:"file_name"` // Original filename
+	FileSize int64  `json:"file_size"` // File size in bytes
+}
+
+// SearchKnowledgeRequest defines the request structure for searching knowledge without LLM summarization
+type SearchKnowledgeRequest struct {
+	Query            string   `json:"query"              binding:"required"` // Query text to search for
+	KnowledgeBaseID  string   `json:"knowledge_base_id"`                     // Single knowledge base ID (for backward compatibility)
+	KnowledgeBaseIDs []string `json:"knowledge_base_ids"`                    // IDs of knowledge bases to search (multi-KB support)
+	KnowledgeIDs     []string `json:"knowledge_ids"`                         // IDs of specific knowledge (files) to search
+}
+
+// StopSessionRequest represents the stop session request
+type StopSessionRequest struct {
+	MessageID string `json:"message_id" binding:"required"`
+}
