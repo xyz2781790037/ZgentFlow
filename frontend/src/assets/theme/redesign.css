@@ -1,0 +1,406 @@
+:root,
+:root[theme-mode="light"] {
+  --app-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --app-font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --zeal-ink: #18212f;
+  --zeal-ink-soft: #445166;
+  --zeal-muted: #778398;
+  --zeal-faint: #9aa5b5;
+  --zeal-canvas: #f3f6fa;
+  --zeal-surface: #ffffff;
+  --zeal-surface-subtle: #f8fafc;
+  --zeal-surface-muted: #edf2f7;
+  --zeal-line: #dbe3ed;
+  --zeal-line-strong: #c6d1df;
+  --zeal-primary: #1769dc;
+  --zeal-primary-hover: #0f5ecb;
+  --zeal-primary-active: #0a4fae;
+  --zeal-primary-soft: #eaf2ff;
+  --zeal-teal: #0f9f8f;
+  --zeal-teal-soft: #e4f6f2;
+  --zeal-amber: #b86a10;
+  --zeal-amber-soft: #fff4df;
+  --zeal-danger: #c83e4d;
+  --zeal-danger-soft: #fff0f1;
+  --zeal-sidebar: #171b22;
+  --zeal-sidebar-muted: #9ca7b7;
+  --zeal-shadow-xs: 0 1px 2px rgba(23, 34, 51, 0.06);
+  --zeal-shadow-sm: 0 8px 24px rgba(23, 34, 51, 0.08);
+  --zeal-shadow-md: 0 18px 48px rgba(16, 26, 41, 0.14);
+  --zeal-radius-sm: 4px;
+  --zeal-radius-md: 6px;
+  --zeal-radius-lg: 8px;
+  --zeal-duration: 160ms;
+
+  --brand-main: var(--zeal-primary);
+  --td-brand-color-1: #f3f7ff;
+  --td-brand-color-2: #e5efff;
+  --td-brand-color-3: #c9dcfb;
+  --td-brand-color-4: #9fc1f4;
+  --td-brand-color-5: #6b9dea;
+  --td-brand-color-6: #3f81e2;
+  --td-brand-color-7: var(--zeal-primary);
+  --td-brand-color-8: var(--zeal-primary-hover);
+  --td-brand-color-9: var(--zeal-primary-active);
+  --td-brand-color-10: #083d89;
+  --td-brand-color: var(--zeal-primary);
+  --td-brand-color-hover: var(--zeal-primary-hover);
+  --td-brand-color-focus: #d9e8ff;
+  --td-brand-color-active: var(--zeal-primary-active);
+  --td-brand-color-disabled: #9fbce5;
+  --td-brand-color-light: var(--zeal-primary-soft);
+  --td-bg-color-page: var(--zeal-canvas);
+  --td-bg-color-container: var(--zeal-surface);
+  --td-bg-color-container-select: var(--zeal-surface);
+  --td-bg-color-container-hover: var(--zeal-surface-subtle);
+  --td-bg-color-container-active: var(--zeal-surface-muted);
+  --td-bg-color-secondarycontainer: var(--zeal-surface-subtle);
+  --td-bg-color-secondarycontainer-hover: var(--zeal-surface-muted);
+  --td-bg-color-sidebar: var(--zeal-surface-subtle);
+  --td-bg-color-settings-modal: var(--zeal-surface-subtle);
+  --td-bg-color-component: var(--zeal-surface-muted);
+  --td-bg-color-component-hover: #e3e9f0;
+  --td-bg-color-component-active: #d6dee8;
+  --td-bg-color-component-disabled: #eef2f6;
+  --td-component-stroke: var(--zeal-line);
+  --td-component-border: var(--zeal-line-strong);
+  --td-text-color-primary: var(--zeal-ink);
+  --td-text-color-secondary: var(--zeal-ink-soft);
+  --td-text-color-placeholder: var(--zeal-faint);
+  --td-text-color-disabled: #b3bdca;
+  --td-text-color-anti: #ffffff;
+  --td-text-color-brand: var(--zeal-primary);
+  --td-text-color-link: var(--zeal-primary);
+  --td-font-family: var(--app-font-family);
+  --td-font-family-medium: var(--app-font-family);
+  --td-radius-small: var(--zeal-radius-sm);
+  --td-radius-default: var(--zeal-radius-md);
+  --td-radius-medium: var(--zeal-radius-md);
+  --td-radius-large: var(--zeal-radius-lg);
+  --td-radius-extraLarge: var(--zeal-radius-lg);
+  --td-shadow-1: var(--zeal-shadow-xs);
+  --td-shadow-2: var(--zeal-shadow-sm);
+  --td-shadow-3: var(--zeal-shadow-md);
+}
+
+:root[theme-mode="dark"] {
+  --zeal-ink: #eef3f8;
+  --zeal-ink-soft: #b6c0ce;
+  --zeal-muted: #8d99aa;
+  --zeal-faint: #667386;
+  --zeal-canvas: #11151b;
+  --zeal-surface: #191f27;
+  --zeal-surface-subtle: #202730;
+  --zeal-surface-muted: #28313c;
+  --zeal-line: #303a47;
+  --zeal-line-strong: #3b4655;
+  --zeal-primary: #6fa7f4;
+  --zeal-primary-hover: #8bb9f6;
+  --zeal-primary-active: #5595eb;
+  --zeal-primary-soft: #1d3555;
+  --zeal-teal: #52c7b7;
+  --zeal-teal-soft: #173b37;
+  --zeal-amber: #f0b35e;
+  --zeal-amber-soft: #46331b;
+  --zeal-danger: #f07b85;
+  --zeal-danger-soft: #47272d;
+  --zeal-sidebar: #0c0f14;
+  --zeal-sidebar-muted: #8792a1;
+  --td-bg-color-page: var(--zeal-canvas);
+  --td-bg-color-container: var(--zeal-surface);
+  --td-bg-color-container-select: var(--zeal-surface);
+  --td-bg-color-container-hover: var(--zeal-surface-subtle);
+  --td-bg-color-container-active: var(--zeal-surface-muted);
+  --td-bg-color-secondarycontainer: var(--zeal-surface-subtle);
+  --td-bg-color-secondarycontainer-hover: var(--zeal-surface-muted);
+  --td-bg-color-sidebar: var(--zeal-surface);
+  --td-bg-color-settings-modal: var(--zeal-surface);
+  --td-bg-color-component: var(--zeal-surface-muted);
+  --td-bg-color-component-hover: #323d49;
+  --td-bg-color-component-active: #3a4654;
+  --td-bg-color-component-disabled: #252d37;
+  --td-component-stroke: var(--zeal-line);
+  --td-component-border: var(--zeal-line-strong);
+  --td-text-color-primary: var(--zeal-ink);
+  --td-text-color-secondary: var(--zeal-ink-soft);
+  --td-text-color-placeholder: var(--zeal-faint);
+  --td-text-color-disabled: #596678;
+  --td-text-color-anti: #ffffff;
+  --td-text-color-brand: var(--zeal-primary);
+  --td-text-color-link: var(--zeal-primary);
+  --td-brand-color: var(--zeal-primary);
+  --td-brand-color-hover: var(--zeal-primary-hover);
+  --td-brand-color-active: var(--zeal-primary-active);
+  --td-brand-color-light: var(--zeal-primary-soft);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  letter-spacing: 0;
+}
+
+html,
+body,
+#app {
+  background: var(--zeal-canvas);
+  color: var(--zeal-ink);
+}
+
+body {
+  overflow: hidden;
+}
+
+::selection {
+  color: var(--zeal-ink);
+  background: #cfe1fb;
+}
+
+:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--zeal-primary) 70%, white);
+  outline-offset: 2px;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  letter-spacing: 0;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #b8c3d0 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: #b8c3d0;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.t-button {
+  min-height: 36px;
+  border-radius: var(--zeal-radius-md);
+  box-shadow: none;
+  font-weight: 650;
+  transition: color var(--zeal-duration) ease,
+    background var(--zeal-duration) ease,
+    border-color var(--zeal-duration) ease,
+    transform var(--zeal-duration) ease;
+}
+
+.t-button:not(.t-is-disabled):active {
+  transform: translateY(1px);
+}
+
+.t-button--theme-primary {
+  box-shadow: 0 4px 12px rgba(23, 105, 220, 0.2);
+}
+
+.t-button--variant-outline,
+.t-button--theme-default:not(.t-button--variant-text) {
+  border-color: var(--zeal-line-strong);
+  background: var(--zeal-surface);
+}
+
+.t-button--shape-square {
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--zeal-line);
+  border-radius: var(--zeal-radius-md);
+  color: var(--zeal-ink-soft);
+  background: var(--zeal-surface-subtle);
+}
+
+.t-button--shape-square:hover {
+  border-color: var(--zeal-primary);
+  color: var(--zeal-primary);
+  background: var(--zeal-primary-soft);
+}
+
+.t-button--theme-danger.t-button--shape-square:hover {
+  border-color: var(--zeal-danger);
+  color: var(--zeal-danger);
+  background: var(--zeal-danger-soft);
+}
+
+.t-input,
+.t-input-number,
+.t-textarea__inner,
+.t-select__wrap,
+.t-range-input,
+.t-date-range-picker,
+.t-cascader__input {
+  border-color: var(--zeal-line);
+  border-radius: var(--zeal-radius-md);
+  background: var(--zeal-surface);
+  box-shadow: none;
+  transition: border-color var(--zeal-duration) ease, box-shadow var(--zeal-duration) ease;
+}
+
+.t-input:hover,
+.t-textarea__inner:hover,
+.t-range-input:hover {
+  border-color: var(--zeal-line-strong);
+}
+
+.t-input.t-is-focused,
+.t-textarea__inner:focus,
+.t-range-input.t-is-focused {
+  border-color: var(--zeal-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--zeal-primary) 13%, transparent);
+}
+
+.t-popup__content,
+.t-dropdown__menu,
+.t-select__dropdown,
+.t-cascader__panel {
+  border: 1px solid var(--zeal-line);
+  border-radius: var(--zeal-radius-lg);
+  background: var(--zeal-surface);
+  box-shadow: var(--zeal-shadow-md);
+}
+
+.t-dialog {
+  border: 1px solid var(--zeal-line);
+  border-radius: var(--zeal-radius-lg);
+  background: var(--zeal-surface);
+  box-shadow: var(--zeal-shadow-md);
+}
+
+.t-dialog__header {
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid var(--zeal-line);
+  font-weight: 720;
+}
+
+.t-dialog__body {
+  padding: 22px 24px;
+}
+
+.t-dialog__footer {
+  padding: 16px 24px 20px;
+  border-top: 1px solid var(--zeal-line);
+}
+
+.t-drawer__content-wrapper {
+  border-left: 1px solid var(--zeal-line);
+  background: var(--zeal-surface);
+  box-shadow: -18px 0 48px rgba(16, 26, 41, 0.13);
+}
+
+.t-drawer__header {
+  border-bottom: 1px solid var(--zeal-line);
+}
+
+.t-tabs__nav-item {
+  color: var(--zeal-muted);
+  font-weight: 620;
+}
+
+.t-tabs__nav-item.t-is-active {
+  color: var(--zeal-ink);
+}
+
+.t-tag {
+  border-radius: var(--zeal-radius-sm);
+  font-weight: 620;
+}
+
+.t-table {
+  color: var(--zeal-ink);
+  background: var(--zeal-surface);
+}
+
+.t-table th {
+  color: var(--zeal-muted);
+  background: var(--zeal-surface-subtle);
+  font-size: 12px;
+  font-weight: 680;
+}
+
+.t-table td,
+.t-table th {
+  border-color: var(--zeal-line);
+}
+
+.t-checkbox__input,
+.t-radio__input {
+  border-color: var(--zeal-line-strong);
+}
+
+.t-switch {
+  border: 0;
+  box-shadow: inset 0 0 0 1px rgba(20, 32, 49, 0.1);
+}
+
+.t-message {
+  border: 1px solid var(--zeal-line);
+  border-radius: var(--zeal-radius-md);
+  box-shadow: var(--zeal-shadow-sm);
+}
+
+.t-skeleton__col {
+  border-radius: var(--zeal-radius-sm);
+}
+
+.t-loading__gradient {
+  color: var(--zeal-primary);
+}
+
+@keyframes zeal-page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.platform-route-outlet > * {
+  animation: zeal-page-enter 220ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .t-dialog {
+    width: calc(100vw - 24px) !important;
+    max-height: calc(100vh - 24px);
+    margin: 12px;
+  }
+
+  .t-drawer__content-wrapper {
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+}
